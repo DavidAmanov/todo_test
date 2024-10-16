@@ -1,6 +1,8 @@
+import FiltersModule from "./Filters.module.css";
+
 const Filters = () => {
   return (
-    <div>
+    <div className={FiltersModule.container}>
       <span>number items</span>
       <div>
         <button>All</button>
