@@ -4,7 +4,12 @@ import { AddNewTaskProps, taskType } from "../../Types/types";
 
 import { v4 as uuidv4 } from "uuid";
 
-const AddNewTask: React.FC<AddNewTaskProps> = ({ addTask, order }) => {
+const AddNewTask: React.FC<AddNewTaskProps> = ({
+  addTask,
+  order,
+  showTasks,
+  setShowTasks,
+}) => {
   const handleAdd = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
       const newTask: taskType = {
@@ -17,12 +22,24 @@ const AddNewTask: React.FC<AddNewTaskProps> = ({ addTask, order }) => {
       event.currentTarget.value = "";
     }
   };
+
+  const handleShowTasks = () => {
+    setShowTasks(!showTasks);
+  };
+
   return (
     <div className={AddNewTaskModule.container}>
-      <button className={AddNewTaskModule.container__btn}>
-        <img src={arrow} alt="arrow" />
+      <button
+        className={AddNewTaskModule.container__btn}
+        onClick={handleShowTasks}
+      >
+        <img
+          src={arrow}
+          alt="arrow"
+          style={{ rotate: !showTasks ? "270deg" : "0deg" }}
+        />
       </button>
-      <input onKeyDown={handleAdd}></input>
+      <input onKeyDown={handleAdd} placeholder="Add new task"></input>
     </div>
   );
 };

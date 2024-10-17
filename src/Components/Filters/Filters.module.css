@@ -1,3 +1,20 @@
 .container {
   display: flex;
+  border: 1px solid black;
+  font-size: 14px;
+  padding: 4px;
+  justify-content: space-between;
+}
+
+.container__div {
+  gap: 3px;
+}
+.container button {
+  background-color: transparent;
+  border: 0.5px solid transparent;
+}
+
+.container button:active {
+  background-color: transparent;
+  border: 0.5px solid pink;
 }

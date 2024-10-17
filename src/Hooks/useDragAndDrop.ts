@@ -11,7 +11,7 @@ export const useDragAndDrop = (
     setDraggingTask(task);
   };
 
-  const handleDragEnter = (targetTask: taskType) => {
+  const handleDragEnter = (e: React.DragEvent, targetTask: taskType) => {
     if (draggingTask && draggingTask.id !== targetTask.id) {
       const reorderedTasks = tasks.map((task) => {
         if (task.id === draggingTask.id) {
@@ -22,7 +22,7 @@ export const useDragAndDrop = (
         }
         return task;
       });
-
+      e.currentTarget.classList.add("drag-over");
       const updatedTasks = reorderedTasks
         .sort((a, b) => a.order - b.order)
         .map((task, index) => ({
@@ -34,11 +34,19 @@ export const useDragAndDrop = (
   };
 
   const handleDragEnd = () => {
+    document.querySelectorAll(".drag-over").forEach((element) => {
+      element.classList.remove("drag-over");
+    });
     setDraggingTask(null);
   };
 
   const handleDragOver = (e: React.DragEvent) => {
     e.preventDefault();
+    e.currentTarget.classList.add("drag-over");
+  };
+
+  const handleDragLeave = (e: React.DragEvent) => {
+    e.currentTarget.classList.remove("drag-over");
   };
 
   return {
@@ -46,5 +54,6 @@ export const useDragAndDrop = (
     handleDragEnter,
     handleDragEnd,
     handleDragOver,
+    handleDragLeave,
   };
 };

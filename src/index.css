@@ -1,4 +1,6 @@
 body {
+  display: flex;
+  justify-content: center;
   margin: 0;
   box-sizing: border-box;
   background-color: rgb(197, 161, 161);
@@ -12,4 +14,8 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.drag-over {
+  background-color: rgb(223, 230, 255);
 }
