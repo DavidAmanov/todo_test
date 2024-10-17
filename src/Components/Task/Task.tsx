@@ -21,7 +21,11 @@ const Task = ({
   };
   return (
     <button className={TaskModule.container} onClick={handleIsChecked}>
-      <input type="checkbox" checked={task.itsDone}></input>
+      <input
+        type="checkbox"
+        checked={task.itsDone}
+        onChange={handleIsChecked}
+      ></input>
       <span style={{ textDecoration: task.itsDone ? "line-through" : "none" }}>
         {task.title}
       </span>
